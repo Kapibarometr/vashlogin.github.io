@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Доступ по коду</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Введите код доступа</h1>
+    <input type="password" id="codeInput" placeholder="Введите код">
+    <button onclick="checkCode()">Войти</button>
+    <div id="errorMessage" class="error"></div>
+    
+    <script>
+        function checkCode() {
+            const correctCode = ",f,eirf40"; // Единый код для доступа
+            
+            const enteredCode = document.getElementById('codeInput').value;
+            const errorElement = document.getElementById('errorMessage');
+            
+            if (enteredCode === correctCode) {
+                // Перенаправляем на страницу с контентом
+                window.location.href = "content.html";
+            } else {
+                errorElement.textContent = "Неверный код. Попробуйте еще раз.";
+            }
+        }
+        
+        // Обработка нажатия Enter в поле ввода
+        document.getElementById('codeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkCode();
+            }
+        });
+    </script>
+</body>
+</html>
